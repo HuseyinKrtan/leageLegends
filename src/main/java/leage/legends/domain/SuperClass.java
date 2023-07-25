@@ -1,6 +1,7 @@
 package leage.legends.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import leage.legends.enumLol.Difficulty;
 import leage.legends.enumLol.Gender;
 import leage.legends.enumLol.Role;
@@ -32,12 +33,15 @@ public abstract class SuperClass {
 
 
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Gender gender;
 
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Difficulty difficulty;
 
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Role role;
 
 

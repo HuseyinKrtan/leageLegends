@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -31,10 +28,25 @@ public class AssassinController {
      return  new ResponseEntity<>("Hero has been saved...",HttpStatus.CREATED);
     }
 
+    // assasları getırme
     @GetMapping("/getAll")  // http://localhost:8080/assassins/getAll
     public ResponseEntity<List<AssassinResponse>> getAllAssassins(){
         List<AssassinResponse> asassassinList=assassinService.getAllAssassins();
         return ResponseEntity.ok(asassassinList);
+    }
+
+    // id li assa 'ı getir
+    @GetMapping("/query")
+    private ResponseEntity<AssassinResponse> getAssassinById (@RequestParam("id") Long id){
+        AssassinResponse assassinResponse=assassinService.getAssassinById(id);
+        return new ResponseEntity<>(assassinResponse,HttpStatus.OK);
+    }
+
+    // delete assas
+    @DeleteMapping("/{id}") //http://localhost:8080/assassins/1 + DELETE
+    public ResponseEntity<String> deleteAssassin(@PathVariable Long id){
+        assassinService.deleteAssassin(id);
+        return ResponseEntity.ok("Id = "+id+" Assassin is deleted");
     }
 
 }
