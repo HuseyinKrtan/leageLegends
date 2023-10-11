@@ -34,14 +34,17 @@ public abstract class SuperClass {
 
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 
